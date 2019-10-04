@@ -79,7 +79,10 @@ def get_country(parsed_film_page):
 
 
 def get_showing_end_date(parsed_film_page):
-    return get_table_field_single(parsed_film_page, 'date').split("В прокате до ")[1]
+    end_date = get_table_field_single(parsed_film_page, 'date')
+    if end_date != "none":
+        return end_date.split("В прокате до ")[1]
+    return end_date
 
 
 def get_afisha_rating(parsed_film_page):

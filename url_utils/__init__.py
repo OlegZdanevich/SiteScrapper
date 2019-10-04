@@ -27,7 +27,6 @@ def get_urls_from_online_cinema_page(url, result_data):
     films = soup.findAll('li', {'class': 'lists__li'})
     urls = set(filter(None, map(lambda x: get_urls_function(x, 'media'), films)))
     result_data = result_data.union(urls)
-    print(len(result_data))
     next_button = soup.find('li', {'class', 'p-next'}).find('a')
     if next_button is not None:
         next_url = next_button['href']
