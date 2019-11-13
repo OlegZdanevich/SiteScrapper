@@ -1,0 +1,20 @@
+version: '3.1'
+
+services:
+
+  db:
+    container_name: scrapper_db
+    image: scrapper_db:0.1
+    build:
+      context: db
+    restart: always
+    ports:
+      - 5432:5432
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
+    depends_on:
+      - db
